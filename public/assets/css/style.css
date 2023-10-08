@@ -18,6 +18,10 @@
   --color-transparent: #ffffff00;
 }
 
+.logo{
+  width:100px;
+  padding: 100px auto;
+}
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -175,9 +179,17 @@ h6 {
 }
 
 @media (max-width: 992px) {
+ .containernav i{
+    display:flex;
+    justify-content: flex-end;
+  }
+  .simulator{
+    text-align: left;
+  }
   .get-started-btn {
-    margin: 0 15px 0 0;
-    padding: 6px 18px;
+    display:none;
+    /* margin: 0 15px 0 0;
+    padding: 6px 18px; */
   }
 }
 
