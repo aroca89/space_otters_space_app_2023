@@ -690,6 +690,15 @@ section {
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
+.services .team-img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: ease-in-out 0.3s;
+  min-width: 100%;
+}
+
 .services .icon-box {
   padding: 60px 30px;
   transition: all ease-in-out 0.3s;
@@ -749,6 +758,10 @@ section {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/solar-wind-affecting-earth.jpg") fixed center center;
   background-size: cover;
   padding: 120px 0;
+}
+
+section.simulator-img{
+  min-height: 100vh;
 }
 
 .cta h3 {
