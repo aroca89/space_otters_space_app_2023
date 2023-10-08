@@ -108,9 +108,13 @@ h6 {
 }
 
 .back-to-top:hover {
-  background: #00c27b;
-  color: #fff;
+  background: var(--color-hover);
 }
+
+.back-to-top:hover i{
+  color: var(--color-primary);
+}
+
 
 .back-to-top.active {
   visibility: visible;
@@ -179,9 +183,6 @@ h6 {
 }
 
 @media (max-width: 992px) {
- .containernav i{
-
-  }
   .simulator{
     text-align: left;
   }
@@ -745,7 +746,7 @@ section {
 # Cta
 --------------------------------------------------------------*/
 .cta {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/cta-bg.jpg") fixed center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/solar-wind-affecting-earth.jpg") fixed center center;
   background-size: cover;
   padding: 120px 0;
 }
@@ -1532,11 +1533,12 @@ section {
   width: 36px;
   height: 36px;
   transition: 0.3s;
+  border:1px solid var(--color-primary);
 }
 
 #footer .social-links a:hover {
-  background: var(--color-hover);
-  color: #fff;
+  background: var(--color-transparent);
+  color: var(--color-primary);
   text-decoration: none;
 }
 
@@ -1549,10 +1551,10 @@ section {
 }
 
 #footer .credits a {
-  color: #00b371;
+  color: var(--color-primary);
   transition: 0.3s;
 }
 
 #footer .credits a:hover {
-  color: var(--color-primary);
+  color: var(--color-hover);
 }
