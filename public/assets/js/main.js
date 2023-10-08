@@ -20,6 +20,18 @@
     }
   }
 
+  document.getElementById("enlaceOcultar").addEventListener("click", function() {
+    var divsParaOcultar = document.getElementsByClassName("divParaOcultar");
+    for (var i = 0; i < divsParaOcultar.length; i++) {
+        var div = divsParaOcultar[i];
+        if (div.style.display !== "block") {
+            div.style.display = "block";
+        } else {
+            div.style.display = "none";
+        }
+    }
+});
+
   /**
    * Easy event listener function
    */
@@ -35,7 +47,7 @@
   }
 
   /**
-   * Easy on scroll event listener 
+   * Easy on scroll event listener
    */
   const onscroll = (el, listener) => {
     el.addEventListener('scroll', listener)
@@ -166,7 +178,7 @@
   }
 
   /**
-   * Initiate glightbox 
+   * Initiate glightbox
    */
   const glightbox = GLightbox({
     selector: '.glightbox'
@@ -201,7 +213,7 @@
   });
 
   /**
-   * Initiate portfolio lightbox 
+   * Initiate portfolio lightbox
    */
   const portfolioLightbox = GLightbox({
     selector: '.portfolio-lightbox'
@@ -225,7 +237,7 @@
   });
 
   /**
-   * Initiate Pure Counter 
+   * Initiate Pure Counter
    */
   new PureCounter();
 

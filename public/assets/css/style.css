@@ -101,6 +101,15 @@ form {
   min-width: 90vw;
   align-items: center;
 }
+
+.divParaOcultar{
+  display: none;
+}
+
+.get-started-btn{
+  visibility: hidden;
+}
+
 .form-control{
   display: flex;
   align-items: left;
@@ -1344,11 +1353,6 @@ section.simulator-img{
 }
 
 @media (max-width: 992px) {
-  .faq {
-    /* img {
-      padding-top: 30px;
-    } */
-  }
 
   .faq .content {
     padding-top: 30px;
