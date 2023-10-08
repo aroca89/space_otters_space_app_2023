@@ -94,11 +94,25 @@ form {
   display: flex;
   flex-direction: column;
   margin-right: 20px;
+  justify-content:left;
 }
 
 .simulation{
   min-width: 90vw;
   align-items: center;
+}
+.form-control{
+  display: flex;
+  align-items: left;
+
+  background-color: var(--color-transparent);
+  border: none;
+}
+.date{
+  color: white;
+}
+.fecha{
+  width: 150px;
 }
 
 /*--------------------------------------------------------------
