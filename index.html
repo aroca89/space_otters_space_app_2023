@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magnetic Reconnection</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://threejs.org/build/three.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Configuración de la cámara
+        camera.position.z = 50;
+
+        // Shader personalizado para el campo magnético
+        const magneticFieldVertexShader = `
+            uniform float time;
+
+            void main() {
+                vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+                gl_PointSize = 5.0;
+                gl_Position = projectionMatrix * mvPosition;
+            }
+        `;
+
+        const magneticFieldFragmentShader = `
+            uniform float time;
+            uniform vec3 color;
+
+            void main() {
+                float alpha = sin(time) * 0.5 + 0.5;
+                gl_FragColor = vec4(color, alpha);
+            }
+        `;
+
+        const magneticFieldMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+                time: { value: 0.0 },
+                color: { value: new THREE.Color(0x00ff00) },
+            },
+            vertexShader: magneticFieldVertexShader,
+            fragmentShader: magneticFieldFragmentShader,
+            transparent: true,
+        });
+
+        // Campo magnético (utilizando partículas para mayor complejidad visual)
+        const magneticFieldParticles = new THREE.Points(
+            new THREE.BufferGeometry().setFromPoints(Array.from({ length: 1000 }, () => new THREE.Vector3(Math.random() * 50 - 25, Math.random() * 50 - 25, Math.random() * 50 - 25))),
+            magneticFieldMaterial
+        );
+        scene.add(magneticFieldParticles);
+
+        // Cilindro representando la "reconexión magnética"
+        const reconnectionCylinderGeometry = new THREE.CylinderGeometry(2, 2, 10, 32);
+        const reconnectionCylinderMaterial = new THREE.MeshBasicMaterial({
+            color: 0xff0000,
+            transparent: true,
+            opacity: 0.8,
+        });
+        const reconnectionCylinder = new THREE.Mesh(reconnectionCylinderGeometry, reconnectionCylinderMaterial);
+        scene.add(reconnectionCylinder);
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Actualizar el tiempo para el shader
+            magneticFieldMaterial.uniforms.time.value += 0.005;
+
+            // Rotar y mover partículas del campo magnético
+            magneticFieldParticles.rotation.x += 0.01;
+            magneticFieldParticles.rotation.y += 0.01;
+            magneticFieldParticles.rotation.z += 0.01;
+
+            // Rotar y escalar el cilindro de reconexión magnética
+            reconnectionCylinder.rotation.y += 0.02;
+            reconnectionCylinder.scale.y = 1 + Math.sin(Date.now() * 0.002) * 0.5;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
