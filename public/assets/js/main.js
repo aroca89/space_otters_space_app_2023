@@ -20,17 +20,7 @@
     }
   }
 
-  document.getElementById("enlaceOcultar").addEventListener("click", function() {
-    var divsParaOcultar = document.getElementsByClassName("divParaOcultar");
-    for (var i = 0; i < divsParaOcultar.length; i++) {
-        var div = divsParaOcultar[i];
-        if (div.style.display !== "block") {
-            div.style.display = "block";
-        } else {
-            div.style.display = "none";
-        }
-    }
-});
+
 
   /**
    * Easy event listener function
